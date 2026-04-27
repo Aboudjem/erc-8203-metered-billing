@@ -1,79 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 360" role="img" aria-label="Gas cost: individual vs batched settlement">
   <defs>
-    <linearGradient id="rose" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#f43f5e"/>
-      <stop offset="100%" stop-color="#fb7185"/>
-    </linearGradient>
-    <linearGradient id="emerald" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#10b981"/>
-      <stop offset="100%" stop-color="#34d399"/>
-    </linearGradient>
-    <style><![CDATA[
-      .sans { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
-      .mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
-      .bar-rose    { transform-origin: left center; animation: grow 4s cubic-bezier(0.4, 0, 0.2, 1) infinite both; }
-      .bar-emerald { transform-origin: left center; animation: grow 4s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: 0.6s; }
-      .label-rose    { animation: appear 4s linear infinite both; }
-      .label-emerald { animation: appear 4s linear infinite both; animation-delay: 0.6s; }
-      .savings       { animation: pop 4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite both; transform-origin: 750px 292px; }
-      @keyframes grow {
-        0%   { transform: scaleX(0); }
-        25%  { transform: scaleX(1); }
-        100% { transform: scaleX(1); }
-      }
-      @keyframes appear {
-        0%   { opacity: 0; }
-        15%  { opacity: 1; }
-        100% { opacity: 1; }
-      }
-      @keyframes pop {
-        0%, 50% { opacity: 0; transform: scale(0.6); }
-        70%     { opacity: 1; transform: scale(1.1); }
-        85%, 100% { opacity: 1; transform: scale(1); }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .bar-rose, .bar-emerald, .label-rose, .label-emerald, .savings {
-          animation: none !important; transform: none !important; opacity: 1 !important;
-        }
-      }
-    ]]></style>
+    <linearGradient id="rose" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f43f5e"/><stop offset="100%" stop-color="#fb7185"/></linearGradient>
+    <linearGradient id="emerald" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#34d399"/></linearGradient>
   </defs>
 
   <rect width="880" height="360" fill="#070a13"/>
 
-  <!-- title -->
-  <g transform="translate(40,40)">
-    <text class="mono" fill="#64748b" font-size="11" letter-spacing="3">SETTLING 50 SESSIONS</text>
-    <text class="sans" fill="#ffffff" font-size="22" font-weight="700" letter-spacing="-0.5" y="28">Individual vs batched</text>
-  </g>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
 
-  <!-- Row 1: individual (full bar = 700px) -->
-  <g transform="translate(40,120)">
-    <text class="sans" fill="#94a3b8" font-size="13" font-weight="500" y="-8">Individual settlement (50 txs)</text>
-    <rect width="700" height="28" rx="6" fill="#1e293b"/>
-    <rect class="bar-rose" width="700" height="28" rx="6" fill="url(#rose)"/>
-    <g class="label-rose">
-      <text class="mono" fill="#fff" font-size="12" font-weight="600" x="710" y="20">~4,000,000 gas</text>
+    <!-- title -->
+    <text x="40" y="50" fill="#64748b" font-size="11" font-family="ui-monospace, Menlo, monospace" letter-spacing="3">SETTLING 50 SESSIONS</text>
+    <text x="40" y="80" fill="#ffffff" font-size="24" font-weight="700" letter-spacing="-0.5">Individual vs batched</text>
+
+    <!-- Row 1: individual settlement -->
+    <text x="40" y="135" fill="#94a3b8" font-size="13" font-weight="500">Individual settlement (50 txs)</text>
+    <rect x="40" y="148" width="700" height="28" rx="6" fill="#1e293b"/>
+    <rect x="40" y="148" width="700" height="28" rx="6" fill="url(#rose)"/>
+    <text x="750" y="167" fill="#ffffff" font-size="12" font-weight="700" font-family="ui-monospace, Menlo, monospace">~4,000,000 gas</text>
+
+    <!-- Row 2: batched settlement -->
+    <text x="40" y="220" fill="#94a3b8" font-size="13" font-weight="500">Batched via merkle root (1 tx)</text>
+    <rect x="40" y="233" width="700" height="28" rx="6" fill="#1e293b"/>
+    <rect x="40" y="233" width="35" height="28" rx="6" fill="url(#emerald)"/>
+    <text x="85" y="252" fill="#34d399" font-size="12" font-weight="700" font-family="ui-monospace, Menlo, monospace">~200,000 gas</text>
+
+    <!-- Savings callout -->
+    <g transform="translate(590,275)">
+      <rect width="220" height="60" rx="14" fill="#10b981" fill-opacity="0.12" stroke="#34d399" stroke-opacity="0.45"/>
+      <text x="110" y="34" fill="#34d399" font-size="28" font-weight="800" text-anchor="middle">20×</text>
+      <text x="110" y="50" fill="#94a3b8" font-size="10" font-family="ui-monospace, Menlo, monospace" text-anchor="middle">cheaper · same security</text>
     </g>
-  </g>
 
-  <!-- Row 2: batched (proportional bar ≈ 5% of 700 = 35px) -->
-  <g transform="translate(40,200)">
-    <text class="sans" fill="#94a3b8" font-size="13" font-weight="500" y="-8">Batched via merkle root (1 tx)</text>
-    <rect width="700" height="28" rx="6" fill="#1e293b"/>
-    <rect class="bar-emerald" width="35" height="28" rx="6" fill="url(#emerald)"/>
-    <g class="label-emerald">
-      <text class="mono" fill="#34d399" font-size="12" font-weight="600" x="50" y="20">~200,000 gas</text>
-    </g>
-  </g>
+    <!-- Footnote -->
+    <text x="40" y="345" fill="#475569" font-size="10" font-family="ui-monospace, Menlo, monospace">approximate · costs depend on chain and verifier · merkle proof per leaf adds ~12k gas at verification</text>
 
-  <!-- savings callout -->
-  <g class="savings" transform="translate(640,260)">
-    <rect x="-50" y="0" width="220" height="64" rx="14" fill="#10b981" fill-opacity="0.10" stroke="#34d399" stroke-opacity="0.4"/>
-    <text class="sans" fill="#34d399" font-size="32" font-weight="800" x="60" y="34" text-anchor="middle">20×</text>
-    <text class="mono" fill="#94a3b8" font-size="10" x="60" y="52" text-anchor="middle">cheaper · same security</text>
   </g>
-
-  <!-- footnote -->
-  <text class="mono" fill="#475569" font-size="10" x="40" y="330">approximate · gas costs depend on chain and exact verifier · merkle proof per leaf adds ~12k gas at verification time</text>
 </svg>

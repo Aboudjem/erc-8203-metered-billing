@@ -1,104 +1,64 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" role="img" aria-label="Where metered billing fits in the agent stack">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 460" role="img" aria-label="Where metered billing fits in the agent stack">
   <defs>
-    <linearGradient id="layer1" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#06b6d4"/>
-      <stop offset="100%" stop-color="#22d3ee"/>
-    </linearGradient>
-    <linearGradient id="layer2" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#8b5cf6"/>
-      <stop offset="100%" stop-color="#a78bfa"/>
-    </linearGradient>
-    <linearGradient id="layer3" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#f59e0b"/>
-      <stop offset="100%" stop-color="#fbbf24"/>
-    </linearGradient>
-    <linearGradient id="layer4" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#10b981"/>
-      <stop offset="100%" stop-color="#34d399"/>
-    </linearGradient>
-    <linearGradient id="topLayer" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#ec4899"/>
-      <stop offset="100%" stop-color="#f472b6"/>
-    </linearGradient>
-    <style><![CDATA[
-      .sans { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
-      .mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
-      .layer { animation: rise 5s cubic-bezier(0.4,0,0.2,1) infinite both; }
-      .l1 { animation-delay: 0.0s; }
-      .l2 { animation-delay: 0.5s; }
-      .l3 { animation-delay: 1.0s; }
-      .l4 { animation-delay: 1.5s; }
-      .l5 { animation-delay: 2.0s; }
-      .star { animation: twinkle 2s ease-in-out infinite; }
-      @keyframes rise {
-        0%   { opacity: 0; transform: translateY(8px); }
-        15%  { opacity: 1; transform: translateY(0); }
-        100% { opacity: 1; transform: translateY(0); }
-      }
-      @keyframes twinkle {
-        0%, 100% { opacity: 0.4; }
-        50% { opacity: 1; }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .layer, .star { animation: none !important; opacity: 1 !important; transform: none !important; }
-      }
-    ]]></style>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#06b6d4"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#a78bfa"/></linearGradient>
+    <linearGradient id="g3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#fbbf24"/></linearGradient>
+    <linearGradient id="g4" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#34d399"/></linearGradient>
+    <linearGradient id="g5" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ec4899"/><stop offset="100%" stop-color="#f472b6"/></linearGradient>
   </defs>
 
-  <rect width="880" height="420" fill="#070a13"/>
+  <rect width="880" height="460" fill="#070a13"/>
 
-  <!-- title -->
-  <g transform="translate(40,40)">
-    <text class="mono" fill="#64748b" font-size="11" letter-spacing="3">AGENT STACK</text>
-    <text class="sans" fill="#ffffff" font-size="22" font-weight="700" letter-spacing="-0.5" y="28">Where metered billing fits</text>
-  </g>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
 
-  <!-- Layers from bottom up -->
-  <!-- Layer 1: ERC-8004 identity -->
-  <g class="layer l1" transform="translate(120,360)">
-    <rect width="640" height="44" rx="10" fill="#0f1524" stroke="url(#layer1)" stroke-opacity="0.45"/>
-    <rect width="6" height="44" rx="3" fill="url(#layer1)"/>
-    <text class="mono" fill="#22d3ee" font-size="12" font-weight="600" x="22" y="22">ERC-8004</text>
-    <text class="sans" fill="#cbd5e1" font-size="13" x="100" y="22">Agent identity, reputation, validation</text>
-    <text class="mono" fill="#64748b" font-size="10" x="22" y="38">who is this agent?</text>
-  </g>
+    <text x="40" y="50" fill="#64748b" font-size="11" font-family="ui-monospace, Menlo, monospace" letter-spacing="3">AGENT STACK</text>
+    <text x="40" y="80" fill="#ffffff" font-size="24" font-weight="700" letter-spacing="-0.5">Where metered billing fits</text>
 
-  <!-- Layer 2: ERC-8118 authorization -->
-  <g class="layer l2" transform="translate(120,300)">
-    <rect width="640" height="44" rx="10" fill="#0f1524" stroke="url(#layer2)" stroke-opacity="0.45"/>
-    <rect width="6" height="44" rx="3" fill="url(#layer2)"/>
-    <text class="mono" fill="#a78bfa" font-size="12" font-weight="600" x="22" y="22">ERC-8118</text>
-    <text class="sans" fill="#cbd5e1" font-size="13" x="100" y="22">Function-level authorization</text>
-    <text class="mono" fill="#64748b" font-size="10" x="22" y="38">what can this agent call?</text>
-  </g>
-
-  <!-- Layer 3: ERC-8183 commerce -->
-  <g class="layer l3" transform="translate(120,240)">
-    <rect width="640" height="44" rx="10" fill="#0f1524" stroke="url(#layer3)" stroke-opacity="0.45"/>
-    <rect width="6" height="44" rx="3" fill="url(#layer3)"/>
-    <text class="mono" fill="#fbbf24" font-size="12" font-weight="600" x="22" y="22">ERC-8183</text>
-    <text class="sans" fill="#cbd5e1" font-size="13" x="100" y="22">Job escrow and commerce</text>
-    <text class="mono" fill="#64748b" font-size="10" x="22" y="38">what's the budget for the work?</text>
-  </g>
-
-  <!-- Layer 4: ERC-8203 settlement -->
-  <g class="layer l4" transform="translate(120,180)">
-    <rect width="640" height="44" rx="10" fill="#0f1524" stroke="url(#layer4)" stroke-opacity="0.45"/>
-    <rect width="6" height="44" rx="3" fill="url(#layer4)"/>
-    <text class="mono" fill="#34d399" font-size="12" font-weight="600" x="22" y="22">ERC-8203</text>
-    <text class="sans" fill="#cbd5e1" font-size="13" x="100" y="22">Off-chain conditional settlement</text>
-    <text class="mono" fill="#64748b" font-size="10" x="22" y="38">how do they actually pay each other?</text>
-  </g>
-
-  <!-- Top: this profile -->
-  <g class="layer l5" transform="translate(120,110)">
-    <rect width="640" height="58" rx="12" fill="#0f1524" stroke="url(#topLayer)" stroke-opacity="0.55"/>
-    <rect width="6" height="58" rx="3" fill="url(#topLayer)"/>
-    <g transform="translate(22,16)">
-      <circle class="star" cx="0" cy="0" r="3" fill="#f472b6"/>
+    <!-- Top: this profile -->
+    <g transform="translate(120,120)">
+      <rect width="640" height="62" rx="12" fill="#0f1524" stroke="#f472b6" stroke-opacity="0.55"/>
+      <rect width="6" height="62" rx="3" fill="url(#g5)"/>
+      <circle cx="34" cy="22" r="3.5" fill="#f472b6"/>
+      <text x="48" y="26" fill="#f472b6" font-size="12" font-weight="700" font-family="ui-monospace, Menlo, monospace">this profile</text>
+      <text x="22" y="46" fill="#ffffff" font-size="15" font-weight="700">Metered Billing for Agent Services</text>
+      <text x="22" y="58" fill="#64748b" font-size="10" font-family="ui-monospace, Menlo, monospace">a pattern, not a new ERC</text>
     </g>
-    <text class="mono" fill="#f472b6" font-size="12" font-weight="700" x="40" y="22">this profile</text>
-    <text class="sans" fill="#ffffff" font-size="14" font-weight="700" x="40" y="42">Metered Billing for Agent Services</text>
-    <text class="mono" fill="#64748b" font-size="10" x="40" y="55">a pattern, not a new ERC</text>
+
+    <!-- Layer 4: ERC-8203 settlement -->
+    <g transform="translate(120,200)">
+      <rect width="640" height="46" rx="10" fill="#0f1524" stroke="#34d399" stroke-opacity="0.45"/>
+      <rect width="6" height="46" rx="3" fill="url(#g4)"/>
+      <text x="22" y="22" fill="#34d399" font-size="12" font-weight="700" font-family="ui-monospace, Menlo, monospace">ERC-8203</text>
+      <text x="110" y="22" fill="#cbd5e1" font-size="13">Off-chain conditional settlement</text>
+      <text x="22" y="40" fill="#64748b" font-size="10" font-family="ui-monospace, Menlo, monospace">how do they actually pay each other?</text>
+    </g>
+
+    <!-- Layer 3: ERC-8183 commerce -->
+    <g transform="translate(120,260)">
+      <rect width="640" height="46" rx="10" fill="#0f1524" stroke="#fbbf24" stroke-opacity="0.45"/>
+      <rect width="6" height="46" rx="3" fill="url(#g3)"/>
+      <text x="22" y="22" fill="#fbbf24" font-size="12" font-weight="700" font-family="ui-monospace, Menlo, monospace">ERC-8183</text>
+      <text x="110" y="22" fill="#cbd5e1" font-size="13">Job escrow and commerce</text>
+      <text x="22" y="40" fill="#64748b" font-size="10" font-family="ui-monospace, Menlo, monospace">what's the budget for the work?</text>
+    </g>
+
+    <!-- Layer 2: ERC-8118 authorization -->
+    <g transform="translate(120,320)">
+      <rect width="640" height="46" rx="10" fill="#0f1524" stroke="#a78bfa" stroke-opacity="0.45"/>
+      <rect width="6" height="46" rx="3" fill="url(#g2)"/>
+      <text x="22" y="22" fill="#a78bfa" font-size="12" font-weight="700" font-family="ui-monospace, Menlo, monospace">ERC-8118</text>
+      <text x="110" y="22" fill="#cbd5e1" font-size="13">Function-level authorization</text>
+      <text x="22" y="40" fill="#64748b" font-size="10" font-family="ui-monospace, Menlo, monospace">what can this agent call?</text>
+    </g>
+
+    <!-- Layer 1: ERC-8004 identity -->
+    <g transform="translate(120,380)">
+      <rect width="640" height="46" rx="10" fill="#0f1524" stroke="#22d3ee" stroke-opacity="0.45"/>
+      <rect width="6" height="46" rx="3" fill="url(#g1)"/>
+      <text x="22" y="22" fill="#22d3ee" font-size="12" font-weight="700" font-family="ui-monospace, Menlo, monospace">ERC-8004</text>
+      <text x="110" y="22" fill="#cbd5e1" font-size="13">Agent identity, reputation, validation</text>
+      <text x="22" y="40" fill="#64748b" font-size="10" font-family="ui-monospace, Menlo, monospace">who is this agent?</text>
+    </g>
+
   </g>
 </svg>
