@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 360" role="img" aria-label="Gas cost: individual vs batched settlement">
+  <defs>
+    <linearGradient id="rose" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+    <linearGradient id="emerald" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <style><![CDATA[
+      .sans { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
+      .bar-rose { transform-origin: left; animation: grow-rose 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+      .bar-emerald { transform-origin: left; animation: grow-emerald 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+      .label-rose { animation: appear 4s linear infinite; }
+      .label-emerald { animation: appear 4s linear infinite; animation-delay: 0.6s; }
+      .savings { animation: pop 4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; transform-origin: 760px 200px; }
+      @keyframes grow-rose {
+        0% { transform: scaleX(0); }
+        25% { transform: scaleX(1); }
+        100% { transform: scaleX(1); }
+      }
+      @keyframes grow-emerald {
+        0% { transform: scaleX(0); }
+        20% { transform: scaleX(0); }
+        45% { transform: scaleX(0.05); }
+        100% { transform: scaleX(0.05); }
+      }
+      @keyframes appear {
+        0% { opacity: 0; }
+        15% { opacity: 1; }
+        100% { opacity: 1; }
+      }
+      @keyframes pop {
+        0%, 50% { opacity: 0; transform: scale(0.6); }
+        70% { opacity: 1; transform: scale(1.1); }
+        85%, 100% { opacity: 1; transform: scale(1); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bar-rose, .bar-emerald, .label-rose, .label-emerald, .savings { animation: none !important; transform: none !important; opacity: 1 !important; }
+      }
+    ]]></style>
+  </defs>
+
+  <rect width="880" height="360" fill="#070a13"/>
+
+  <!-- title -->
+  <g transform="translate(40,40)">
+    <text class="mono" fill="#64748b" font-size="11" letter-spacing="3">SETTLING 50 SESSIONS</text>
+    <text class="sans" fill="#ffffff" font-size="22" font-weight="700" letter-spacing="-0.5" y="28">Individual vs batched</text>
+  </g>
+
+  <!-- Row 1: individual -->
+  <g transform="translate(40,120)">
+    <text class="sans" fill="#94a3b8" font-size="13" font-weight="500" y="-8">Individual settlement (50 txs)</text>
+    <rect width="700" height="28" rx="6" fill="#1e293b"/>
+    <rect class="bar-rose" width="700" height="28" rx="6" fill="url(#rose)"/>
+    <g class="label-rose">
+      <text class="mono" fill="#fff" font-size="12" font-weight="600" x="710" y="20">~4,000,000 gas</text>
+    </g>
+  </g>
+
+  <!-- Row 2: batched -->
+  <g transform="translate(40,200)">
+    <text class="sans" fill="#94a3b8" font-size="13" font-weight="500" y="-8">Batched via merkle root (1 tx)</text>
+    <rect width="700" height="28" rx="6" fill="#1e293b"/>
+    <rect class="bar-emerald" width="700" height="28" rx="6" fill="url(#emerald)"/>
+    <g class="label-emerald">
+      <text class="mono" fill="#34d399" font-size="12" font-weight="600" x="50" y="20">~200,000 gas</text>
+    </g>
+  </g>
+
+  <!-- savings callout -->
+  <g class="savings" transform="translate(640,260)">
+    <rect x="-50" y="0" width="220" height="64" rx="14" fill="#10b981" fill-opacity="0.10" stroke="#34d399" stroke-opacity="0.4"/>
+    <text class="sans" fill="#34d399" font-size="32" font-weight="800" x="60" y="34" text-anchor="middle">20×</text>
+    <text class="mono" fill="#94a3b8" font-size="10" x="60" y="52" text-anchor="middle">cheaper · same security</text>
+  </g>
+
+  <!-- footnote -->
+  <text class="mono" fill="#475569" font-size="10" x="40" y="330">approximate · gas costs depend on chain and exact verifier · merkle proof per leaf adds ~12k gas at verification time</text>
+</svg>

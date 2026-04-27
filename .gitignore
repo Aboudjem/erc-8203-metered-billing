@@ -1,0 +1,29 @@
+# Editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Node (in case examples are added later)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Build output
+dist/
+build/
+out/
+
+# Internal planning dirs
+.planning/
+.omc/
+.deep-research/
+.gsd/
+.claude/
+.recap/

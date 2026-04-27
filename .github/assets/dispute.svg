@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 360" role="img" aria-label="Three settlement paths: happy, refund, dispute">
+  <defs>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#f87171"/>
+    </linearGradient>
+    <style><![CDATA[
+      .sans { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
+      .ring-1 { animation: ring 3s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+      .ring-2 { animation: ring 3s ease-in-out infinite; animation-delay: 1s; transform-origin: center; transform-box: fill-box; }
+      .ring-3 { animation: ring 3s ease-in-out infinite; animation-delay: 2s; transform-origin: center; transform-box: fill-box; }
+      .check { animation: check 3s ease-in-out infinite; }
+      @keyframes ring {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+      }
+      @keyframes check {
+        0%, 30%, 100% { stroke-dashoffset: 30; }
+        60% { stroke-dashoffset: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .ring-1, .ring-2, .ring-3, .check { animation: none !important; opacity: 1 !important; }
+      }
+    ]]></style>
+  </defs>
+
+  <rect width="880" height="360" fill="#070a13"/>
+
+  <g transform="translate(40,40)">
+    <text class="mono" fill="#64748b" font-size="11" letter-spacing="3">THREE PATHS · SAME PRIMITIVES</text>
+    <text class="sans" fill="#ffffff" font-size="22" font-weight="700" letter-spacing="-0.5" y="28">Happy, refund, dispute</text>
+  </g>
+
+  <!-- Card 1: Happy -->
+  <g transform="translate(40,120)">
+    <rect width="260" height="200" rx="18" fill="#0f1524" stroke="url(#green)" stroke-opacity="0.4"/>
+    <g class="ring-1">
+      <circle cx="40" cy="40" r="20" fill="none" stroke="url(#green)" stroke-width="2"/>
+      <path class="check" d="M30 40 L37 47 L52 32" stroke="#34d399" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="30"/>
+    </g>
+    <text class="sans" fill="#34d399" font-size="14" font-weight="700" x="80" y="36">Happy path</text>
+    <text class="mono" fill="#64748b" font-size="10" x="80" y="52">most sessions</text>
+
+    <text class="sans" fill="#cbd5e1" font-size="12" x="20" y="100">Provider submits the latest signed</text>
+    <text class="sans" fill="#cbd5e1" font-size="12" x="20" y="118">meter reading. Contract pays the</text>
+    <text class="sans" fill="#cbd5e1" font-size="12" x="20" y="136">earned amount, refunds the rest.</text>
+
+    <rect x="20" y="158" width="220" height="28" rx="8" fill="#10b981" fill-opacity="0.08"/>
+    <text class="mono" fill="#34d399" font-size="11" x="30" y="176">settleConditional()</text>
+  </g>
+
+  <!-- Card 2: Refund -->
+  <g transform="translate(310,120)">
+    <rect width="260" height="200" rx="18" fill="#0f1524" stroke="url(#orange)" stroke-opacity="0.4"/>
+    <g class="ring-2">
+      <circle cx="40" cy="40" r="20" fill="none" stroke="url(#orange)" stroke-width="2"/>
+      <path d="M40 28 L40 42 M40 50 L40 52" stroke="#fbbf24" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
+    <text class="sans" fill="#fbbf24" font-size="14" font-weight="700" x="80" y="36">Refund path</text>
+    <text class="mono" fill="#64748b" font-size="10" x="80" y="52">provider goes silent</text>
+
+    <text class="sans" fill="#cbd5e1" font-size="12" x="20" y="100">Provider never settles. After</text>
+    <text class="sans" fill="#cbd5e1" font-size="12" x="20" y="118">expiry, client reclaims the</text>
+    <text class="sans" fill="#cbd5e1" font-size="12" x="20" y="136">full locked amount. No oracle.</text>
+
+    <rect x="20" y="158" width="220" height="28" rx="8" fill="#f59e0b" fill-opacity="0.08"/>
+    <text class="mono" fill="#fbbf24" font-size="11" x="30" y="176">refundConditional()</text>
+  </g>
+
+  <!-- Card 3: Dispute -->
+  <g transform="translate(580,120)">
+    <rect width="260" height="200" rx="18" fill="#0f1524" stroke="url(#red)" stroke-opacity="0.4"/>
+    <g class="ring-3">
+      <circle cx="40" cy="40" r="20" fill="none" stroke="url(#red)" stroke-width="2"/>
+      <path d="M30 30 L50 50 M50 30 L30 50" stroke="#f87171" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
+    <text class="sans" fill="#f87171" font-size="14" font-weight="700" x="80" y="36">Dispute path</text>
+    <text class="mono" fill="#64748b" font-size="10" x="80" y="52">meter contested</text>
+
+    <text class="sans" fill="#cbd5e1" font-size="12" x="20" y="100">Client submits counter-attestation.</text>
+    <text class="sans" fill="#cbd5e1" font-size="12" x="20" y="118">COMPOSITE condition resolves</text>
+    <text class="sans" fill="#cbd5e1" font-size="12" x="20" y="136">via TEE or multi-oracle quorum.</text>
+
+    <rect x="20" y="158" width="220" height="28" rx="8" fill="#ef4444" fill-opacity="0.08"/>
+    <text class="mono" fill="#f87171" font-size="11" x="30" y="176">COMPOSITE proof</text>
+  </g>
+</svg>

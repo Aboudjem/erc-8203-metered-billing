@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-label="ERC-8203 Metered Billing">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <style><![CDATA[
+      .sans { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
+      .bar { animation: fill 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-origin: left; }
+      .tick-1 { animation: blink 2.5s ease-in-out infinite; }
+      .tick-2 { animation: blink 2.5s ease-in-out infinite; animation-delay: 0.3s; }
+      .tick-3 { animation: blink 2.5s ease-in-out infinite; animation-delay: 0.6s; }
+      .shimmer { animation: shimmer 5.5s ease-in-out infinite; }
+      @keyframes fill {
+        0%, 100% { transform: scaleX(0.18); }
+        50% { transform: scaleX(0.86); }
+      }
+      @keyframes blink {
+        0%, 100% { opacity: 0.35; }
+        50% { opacity: 1; }
+      }
+      @keyframes shimmer {
+        0%, 100% { opacity: 0.92; }
+        50% { opacity: 1; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bar, .tick-1, .tick-2, .tick-3, .shimmer { animation: none !important; }
+      }
+    ]]></style>
+  </defs>
+
+  <rect class="shimmer" width="720" height="200" rx="24" fill="#0a0f1a"/>
+  <rect width="720" height="200" rx="24" fill="url(#brand)" opacity="0.04"/>
+
+  <!-- Meter icon -->
+  <g transform="translate(40,60)">
+    <rect width="80" height="80" rx="14" fill="#0f1524" stroke="#1e293b"/>
+    <!-- meter bar -->
+    <rect x="14" y="34" width="52" height="12" rx="6" fill="#1e293b"/>
+    <rect class="bar" x="14" y="34" width="52" height="12" rx="6" fill="url(#brand)"/>
+    <!-- ticks -->
+    <circle class="tick-1" cx="22" cy="60" r="2.5" fill="#22d3ee"/>
+    <circle class="tick-2" cx="40" cy="60" r="2.5" fill="#22d3ee"/>
+    <circle class="tick-3" cx="58" cy="60" r="2.5" fill="#22d3ee"/>
+  </g>
+
+  <!-- Title -->
+  <g transform="translate(150,80)">
+    <text class="sans" fill="#f8fafc" font-size="40" font-weight="700" letter-spacing="-1">ERC-8203</text>
+    <text class="sans" fill="url(#brand)" font-size="17" font-weight="500" y="26">Metered Billing</text>
+    <text class="sans" fill="#94a3b8" font-size="13" y="56">Pay-per-call without paying gas per call.</text>
+  </g>
+</svg>

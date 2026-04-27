@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-label="ERC-8203 Metered Billing — Lifecycle">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#070a13"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="emerald" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <style><![CDATA[
+      .mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
+      .sans { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      .pulse { animation: pulse 2.4s ease-in-out infinite; }
+      .pulse-2 { animation: pulse 2.4s ease-in-out infinite; animation-delay: 0.6s; }
+      .pulse-3 { animation: pulse 2.4s ease-in-out infinite; animation-delay: 1.2s; }
+      .meter-fill { animation: meterFill 4s ease-in-out infinite; transform-origin: left; }
+      .receipt-1 { animation: hop 2.6s ease-in-out infinite; animation-delay: 0.0s; }
+      .receipt-2 { animation: hop 2.6s ease-in-out infinite; animation-delay: 0.4s; }
+      .receipt-3 { animation: hop 2.6s ease-in-out infinite; animation-delay: 0.8s; }
+      .receipt-4 { animation: hop 2.6s ease-in-out infinite; animation-delay: 1.2s; }
+      .settle-flash { animation: flash 4s ease-in-out infinite; }
+      .counter { animation: countSwap 4s steps(1) infinite; }
+      .lock-glow { animation: glow 3s ease-in-out infinite; }
+      @keyframes pulse {
+        0%, 100% { opacity: .35; }
+        50% { opacity: 1; }
+      }
+      @keyframes meterFill {
+        0% { transform: scaleX(0.05); }
+        50% { transform: scaleX(0.92); }
+        70% { transform: scaleX(0.92); }
+        100% { transform: scaleX(0.05); }
+      }
+      @keyframes hop {
+        0% { opacity: 0; transform: translate(0, 0); }
+        15% { opacity: 1; }
+        70% { opacity: 1; transform: translate(180px, 0); }
+        100% { opacity: 0; transform: translate(180px, 0); }
+      }
+      @keyframes flash {
+        0%, 70% { opacity: 0; }
+        72% { opacity: 1; }
+        85% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+      @keyframes countSwap {
+        0%   { opacity: 0; }
+        5%   { opacity: 1; }
+        100% { opacity: 1; }
+      }
+      @keyframes glow {
+        0%, 100% { filter: drop-shadow(0 0 0 rgba(6,182,212,0)); }
+        50% { filter: drop-shadow(0 0 14px rgba(6,182,212,0.7)); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .pulse, .pulse-2, .pulse-3, .meter-fill, .receipt-1, .receipt-2, .receipt-3, .receipt-4, .settle-flash, .lock-glow { animation: none !important; }
+      }
+    ]]></style>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="360" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="360" fill="url(#cyan)" opacity="0.04"/>
+
+  <!-- title strip -->
+  <g transform="translate(40,28)">
+    <text class="mono" fill="#64748b" font-size="11" letter-spacing="3">ERC-8203 · NON-NORMATIVE PROFILE</text>
+    <text class="sans" fill="#ffffff" font-size="28" font-weight="800" letter-spacing="-0.5" y="36">Metered Billing for Autonomous Agents</text>
+    <text class="sans" fill="#94a3b8" font-size="14" y="60">Pay-per-call without paying gas per call.</text>
+  </g>
+
+  <!-- Stage 1: OPEN -->
+  <g transform="translate(60,140)">
+    <text class="mono" fill="#06b6d4" font-size="10" letter-spacing="2" y="-12">1 · OPEN</text>
+    <rect width="240" height="160" rx="18" fill="#0f1524" stroke="#06b6d4" stroke-opacity="0.35"/>
+    <g class="lock-glow">
+      <rect x="20" y="22" width="200" height="56" rx="10" fill="#06b6d4" fill-opacity="0.08" stroke="#06b6d4" stroke-opacity="0.5"/>
+      <text class="mono" fill="#22d3ee" font-size="11" x="30" y="42">ConditionalLock</text>
+      <text class="mono" fill="#cbd5e1" font-size="10" x="30" y="58">amount: 50 USDC</text>
+      <text class="mono" fill="#cbd5e1" font-size="10" x="30" y="70">expiry: T+24h</text>
+    </g>
+    <text class="sans" fill="#f1f5f9" font-size="13" font-weight="600" x="20" y="108">Client locks max budget</text>
+    <text class="sans" fill="#94a3b8" font-size="11" x="20" y="126">Signed off-chain. No tx yet.</text>
+    <text class="sans" fill="#94a3b8" font-size="11" x="20" y="142">verifier = metering oracle</text>
+  </g>
+
+  <!-- arrow 1 -->
+  <g transform="translate(305,210)">
+    <path d="M 0 10 H 40" stroke="#334155" stroke-width="2" fill="none"/>
+    <path d="M 35 4 L 45 10 L 35 16 Z" fill="#334155"/>
+  </g>
+
+  <!-- Stage 2: METER (off-chain receipts streaming) -->
+  <g transform="translate(360,140)">
+    <text class="mono" fill="#a78bfa" font-size="10" letter-spacing="2" y="-12">2 · METER · OFF-CHAIN</text>
+    <rect width="320" height="160" rx="18" fill="#0f1524" stroke="#a78bfa" stroke-opacity="0.35"/>
+
+    <!-- meter bar -->
+    <g transform="translate(20,28)">
+      <rect width="280" height="14" rx="7" fill="#1e293b"/>
+      <rect class="meter-fill" width="280" height="14" rx="7" fill="url(#violet)"/>
+      <text class="mono" fill="#cbd5e1" font-size="10" y="-4">cumulative usage</text>
+    </g>
+
+    <!-- counter -->
+    <g transform="translate(20,68)">
+      <text class="mono" fill="#94a3b8" font-size="10">totalUnits</text>
+      <g class="counter">
+        <text class="mono" fill="#a78bfa" font-size="22" font-weight="700" x="0" y="22">1,847</text>
+      </g>
+      <text class="mono" fill="#94a3b8" font-size="10" y="42">×  $0.002 = $3.69</text>
+    </g>
+
+    <!-- receipts hopping -->
+    <g transform="translate(80,118)">
+      <g class="receipt-1">
+        <rect width="20" height="12" rx="3" fill="#a78bfa"/>
+      </g>
+      <g class="receipt-2">
+        <rect width="20" height="12" rx="3" fill="#a78bfa"/>
+      </g>
+      <g class="receipt-3">
+        <rect width="20" height="12" rx="3" fill="#a78bfa"/>
+      </g>
+      <g class="receipt-4">
+        <rect width="20" height="12" rx="3" fill="#a78bfa"/>
+      </g>
+      <text class="mono" fill="#94a3b8" font-size="9" y="28">signed meter readings → provider</text>
+    </g>
+
+    <text class="sans" fill="#f1f5f9" font-size="13" font-weight="600" x="20" y="150">Provider streams receipts</text>
+  </g>
+
+  <!-- arrow 2 -->
+  <g transform="translate(685,210)">
+    <path d="M 0 10 H 40" stroke="#334155" stroke-width="2" fill="none"/>
+    <path d="M 35 4 L 45 10 L 35 16 Z" fill="#334155"/>
+  </g>
+
+  <!-- Stage 3: SETTLE -->
+  <g transform="translate(740,140)">
+    <text class="mono" fill="#34d399" font-size="10" letter-spacing="2" y="-12">3 · SETTLE · 1 TX</text>
+    <rect width="240" height="160" rx="18" fill="#0f1524" stroke="#34d399" stroke-opacity="0.35"/>
+
+    <!-- flash -->
+    <rect class="settle-flash" width="240" height="160" rx="18" fill="url(#emerald)" opacity="0.12"/>
+
+    <g transform="translate(20,22)">
+      <rect width="200" height="56" rx="10" fill="#10b981" fill-opacity="0.08" stroke="#34d399" stroke-opacity="0.5"/>
+      <text class="mono" fill="#34d399" font-size="11" x="10" y="20">settleConditional()</text>
+      <text class="mono" fill="#cbd5e1" font-size="10" x="10" y="36">→ provider: 3.69 USDC</text>
+      <text class="mono" fill="#cbd5e1" font-size="10" x="10" y="48">→ client: 46.31 USDC refund</text>
+    </g>
+
+    <text class="sans" fill="#f1f5f9" font-size="13" font-weight="600" x="20" y="108">One on-chain tx</text>
+    <text class="sans" fill="#94a3b8" font-size="11" x="20" y="126">For the entire session,</text>
+    <text class="sans" fill="#94a3b8" font-size="11" x="20" y="142">no matter how many calls.</text>
+  </g>
+
+  <!-- footer ticks -->
+  <g transform="translate(40,326)">
+    <circle cx="6" cy="0" r="3" class="pulse" fill="#06b6d4"/>
+    <text class="mono" fill="#64748b" font-size="11" x="18" y="4">ERC-8203 conditional locks</text>
+    <circle cx="240" cy="0" r="3" class="pulse-2" fill="#a78bfa"/>
+    <text class="mono" fill="#64748b" font-size="11" x="252" y="4">EIP-712 signed receipts</text>
+    <circle cx="440" cy="0" r="3" class="pulse-3" fill="#34d399"/>
+    <text class="mono" fill="#64748b" font-size="11" x="452" y="4">batch via merkle root (20× cheaper)</text>
+  </g>
+</svg>
