@@ -11,34 +11,30 @@
     <style><![CDATA[
       .sans { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
       .mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
-      .bar-rose { transform-origin: left; animation: grow-rose 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-      .bar-emerald { transform-origin: left; animation: grow-emerald 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-      .label-rose { animation: appear 4s linear infinite; }
-      .label-emerald { animation: appear 4s linear infinite; animation-delay: 0.6s; }
-      .savings { animation: pop 4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; transform-origin: 760px 200px; }
-      @keyframes grow-rose {
-        0% { transform: scaleX(0); }
-        25% { transform: scaleX(1); }
+      .bar-rose    { transform-origin: left center; animation: grow 4s cubic-bezier(0.4, 0, 0.2, 1) infinite both; }
+      .bar-emerald { transform-origin: left center; animation: grow 4s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: 0.6s; }
+      .label-rose    { animation: appear 4s linear infinite both; }
+      .label-emerald { animation: appear 4s linear infinite both; animation-delay: 0.6s; }
+      .savings       { animation: pop 4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite both; transform-origin: 750px 292px; }
+      @keyframes grow {
+        0%   { transform: scaleX(0); }
+        25%  { transform: scaleX(1); }
         100% { transform: scaleX(1); }
       }
-      @keyframes grow-emerald {
-        0% { transform: scaleX(0); }
-        20% { transform: scaleX(0); }
-        45% { transform: scaleX(0.05); }
-        100% { transform: scaleX(0.05); }
-      }
       @keyframes appear {
-        0% { opacity: 0; }
-        15% { opacity: 1; }
+        0%   { opacity: 0; }
+        15%  { opacity: 1; }
         100% { opacity: 1; }
       }
       @keyframes pop {
         0%, 50% { opacity: 0; transform: scale(0.6); }
-        70% { opacity: 1; transform: scale(1.1); }
+        70%     { opacity: 1; transform: scale(1.1); }
         85%, 100% { opacity: 1; transform: scale(1); }
       }
       @media (prefers-reduced-motion: reduce) {
-        .bar-rose, .bar-emerald, .label-rose, .label-emerald, .savings { animation: none !important; transform: none !important; opacity: 1 !important; }
+        .bar-rose, .bar-emerald, .label-rose, .label-emerald, .savings {
+          animation: none !important; transform: none !important; opacity: 1 !important;
+        }
       }
     ]]></style>
   </defs>
@@ -51,7 +47,7 @@
     <text class="sans" fill="#ffffff" font-size="22" font-weight="700" letter-spacing="-0.5" y="28">Individual vs batched</text>
   </g>
 
-  <!-- Row 1: individual -->
+  <!-- Row 1: individual (full bar = 700px) -->
   <g transform="translate(40,120)">
     <text class="sans" fill="#94a3b8" font-size="13" font-weight="500" y="-8">Individual settlement (50 txs)</text>
     <rect width="700" height="28" rx="6" fill="#1e293b"/>
@@ -61,11 +57,11 @@
     </g>
   </g>
 
-  <!-- Row 2: batched -->
+  <!-- Row 2: batched (proportional bar ≈ 5% of 700 = 35px) -->
   <g transform="translate(40,200)">
     <text class="sans" fill="#94a3b8" font-size="13" font-weight="500" y="-8">Batched via merkle root (1 tx)</text>
     <rect width="700" height="28" rx="6" fill="#1e293b"/>
-    <rect class="bar-emerald" width="700" height="28" rx="6" fill="url(#emerald)"/>
+    <rect class="bar-emerald" width="35" height="28" rx="6" fill="url(#emerald)"/>
     <g class="label-emerald">
       <text class="mono" fill="#34d399" font-size="12" font-weight="600" x="50" y="20">~200,000 gas</text>
     </g>

@@ -23,16 +23,16 @@
     <style><![CDATA[
       .sans { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
       .mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
-      .l1 { animation: rise 5s cubic-bezier(0.4,0,0.2,1) infinite; animation-delay: 0.0s; opacity: 0; }
-      .l2 { animation: rise 5s cubic-bezier(0.4,0,0.2,1) infinite; animation-delay: 0.5s; opacity: 0; }
-      .l3 { animation: rise 5s cubic-bezier(0.4,0,0.2,1) infinite; animation-delay: 1.0s; opacity: 0; }
-      .l4 { animation: rise 5s cubic-bezier(0.4,0,0.2,1) infinite; animation-delay: 1.5s; opacity: 0; }
-      .l5 { animation: rise 5s cubic-bezier(0.4,0,0.2,1) infinite; animation-delay: 2.0s; opacity: 0; }
+      .layer { animation: rise 5s cubic-bezier(0.4,0,0.2,1) infinite both; }
+      .l1 { animation-delay: 0.0s; }
+      .l2 { animation-delay: 0.5s; }
+      .l3 { animation-delay: 1.0s; }
+      .l4 { animation-delay: 1.5s; }
+      .l5 { animation-delay: 2.0s; }
       .star { animation: twinkle 2s ease-in-out infinite; }
       @keyframes rise {
-        0% { opacity: 0; transform: translateY(8px); }
-        15% { opacity: 1; transform: translateY(0); }
-        90% { opacity: 1; transform: translateY(0); }
+        0%   { opacity: 0; transform: translateY(8px); }
+        15%  { opacity: 1; transform: translateY(0); }
         100% { opacity: 1; transform: translateY(0); }
       }
       @keyframes twinkle {
@@ -40,7 +40,7 @@
         50% { opacity: 1; }
       }
       @media (prefers-reduced-motion: reduce) {
-        .l1, .l2, .l3, .l4, .l5, .star { animation: none !important; opacity: 1 !important; transform: none !important; }
+        .layer, .star { animation: none !important; opacity: 1 !important; transform: none !important; }
       }
     ]]></style>
   </defs>
@@ -55,7 +55,7 @@
 
   <!-- Layers from bottom up -->
   <!-- Layer 1: ERC-8004 identity -->
-  <g class="l1" transform="translate(120,360)">
+  <g class="layer l1" transform="translate(120,360)">
     <rect width="640" height="44" rx="10" fill="#0f1524" stroke="url(#layer1)" stroke-opacity="0.45"/>
     <rect width="6" height="44" rx="3" fill="url(#layer1)"/>
     <text class="mono" fill="#22d3ee" font-size="12" font-weight="600" x="22" y="22">ERC-8004</text>
@@ -64,7 +64,7 @@
   </g>
 
   <!-- Layer 2: ERC-8118 authorization -->
-  <g class="l2" transform="translate(120,300)">
+  <g class="layer l2" transform="translate(120,300)">
     <rect width="640" height="44" rx="10" fill="#0f1524" stroke="url(#layer2)" stroke-opacity="0.45"/>
     <rect width="6" height="44" rx="3" fill="url(#layer2)"/>
     <text class="mono" fill="#a78bfa" font-size="12" font-weight="600" x="22" y="22">ERC-8118</text>
@@ -73,7 +73,7 @@
   </g>
 
   <!-- Layer 3: ERC-8183 commerce -->
-  <g class="l3" transform="translate(120,240)">
+  <g class="layer l3" transform="translate(120,240)">
     <rect width="640" height="44" rx="10" fill="#0f1524" stroke="url(#layer3)" stroke-opacity="0.45"/>
     <rect width="6" height="44" rx="3" fill="url(#layer3)"/>
     <text class="mono" fill="#fbbf24" font-size="12" font-weight="600" x="22" y="22">ERC-8183</text>
@@ -82,7 +82,7 @@
   </g>
 
   <!-- Layer 4: ERC-8203 settlement -->
-  <g class="l4" transform="translate(120,180)">
+  <g class="layer l4" transform="translate(120,180)">
     <rect width="640" height="44" rx="10" fill="#0f1524" stroke="url(#layer4)" stroke-opacity="0.45"/>
     <rect width="6" height="44" rx="3" fill="url(#layer4)"/>
     <text class="mono" fill="#34d399" font-size="12" font-weight="600" x="22" y="22">ERC-8203</text>
@@ -91,7 +91,7 @@
   </g>
 
   <!-- Top: this profile -->
-  <g class="l5" transform="translate(120,110)">
+  <g class="layer l5" transform="translate(120,110)">
     <rect width="640" height="58" rx="12" fill="#0f1524" stroke="url(#topLayer)" stroke-opacity="0.55"/>
     <rect width="6" height="58" rx="3" fill="url(#topLayer)"/>
     <g transform="translate(22,16)">
